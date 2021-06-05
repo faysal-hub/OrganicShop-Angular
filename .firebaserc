@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "organicshop-angular-2155c"
+  },
+  "targets": {
+    "organicshop-angular-2155c": {
+      "hosting": {
+        "OrganicShop-Angular": [
+          "organicshop-angular-2155c"
+        ]
+      }
+    }
+  }
+}
