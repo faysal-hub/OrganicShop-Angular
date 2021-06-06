@@ -18,10 +18,9 @@ export class LoginComponent implements OnInit {
     );
   }
 
-  loginFacebook() {
-    this.angularFireAuth.signInWithRedirect(
-      new firebase.auth.FacebookAuthProvider()
-    );
-}
-
+  // loginFacebook() {
+  //   this.angularFireAuth.signInWithRedirect(
+  //     new firebase.auth.FacebookAuthProvider()
+  //   );
+  // }
 }
