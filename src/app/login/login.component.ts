@@ -13,6 +13,15 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {}
 
   loginGoogle() {
-    this.angularFireAuth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
+    this.angularFireAuth.signInWithRedirect(
+      new firebase.auth.GoogleAuthProvider()
+    );
   }
+
+  loginFacebook() {
+    this.angularFireAuth.signInWithRedirect(
+      new firebase.auth.FacebookAuthProvider()
+    );
+}
+
 }
