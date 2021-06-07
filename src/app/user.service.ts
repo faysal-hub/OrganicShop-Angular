@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
 import { AppUser } from './models/appUser';
-import { AngularFireDatabase, AngularFireObject } from '@angular/fire/database';
+import { AngularFireDatabase } from '@angular/fire/database';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -15,7 +15,7 @@ export class UsersService {
     return this.db.object(`${this.dbPath}/${key}`).update(value);
   }
 
-  get(key: string): Observable<unknown> {
-    return this.db.object(`${this.dbPath}/${key}`).valueChanges();
+  get(key: string): Observable<AppUser> {
+    return this.db.object<AppUser>(`${this.dbPath}/${key}`).valueChanges();
   }
 }
