@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 })
 export class NavbarComponent {
   user$: any;
-
+  
   constructor(private authService: AuthService) {
     this.user$ = authService.user$;
   }
