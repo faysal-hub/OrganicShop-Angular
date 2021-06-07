@@ -1,3 +1,5 @@
+import { UsersService } from './user.service';
+
 import { environment } from './../environments/environment';
 
 import { NgModule } from '@angular/core';
@@ -49,6 +51,7 @@ import { AuthGuard } from './auth-guard.service';
   providers: [
     AuthService,
     AuthGuard,
+    UsersService,
   ],
   bootstrap: [AppComponent],
 })
