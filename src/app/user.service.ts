@@ -1,4 +1,6 @@
-import { AngularFireDatabase } from '@angular/fire/database';
+import { Observable } from 'rxjs';
+import { AppUser } from './models/appUser';
+import { AngularFireDatabase, AngularFireObject } from '@angular/fire/database';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -11,5 +13,9 @@ export class UsersService {
 
   save(key: string, value: any): Promise<void> {
     return this.db.object(`${this.dbPath}/${key}`).update(value);
+  }
+
+  get(key: string): Observable<unknown> {
+    return this.db.object(`${this.dbPath}/${key}`).valueChanges();
   }
 }
