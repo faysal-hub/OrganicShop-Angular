@@ -7,16 +7,14 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
-export class LoginComponent implements OnInit {
-  constructor(private auth: AuthService) {}
+export class LoginComponent {
+  constructor(private authService: AuthService) {}
 
-  ngOnInit(): void {}
-
-  loginGoogle() {
-     this.auth.loginGoogle();
+  loginGoogle():void {
+     this.authService.loginGoogle();
   }
 
-  // loginFacebook() {
+  // loginFacebook():void {
   //   this.auth.loginFacebook();
   // }
 }

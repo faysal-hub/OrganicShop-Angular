@@ -13,19 +13,19 @@ export class AuthService {
     this.user$ = this.angularFireAuth.authState;
   }
 
-  loginGoogle() {
+  loginGoogle():void {
     this.angularFireAuth.signInWithRedirect(
       new firebase.auth.GoogleAuthProvider()
     );
   }
 
-  // loginFacebook() {
+  // loginFacebook():void {
   //   this.angularFireAuth.signInWithRedirect(
   //     new firebase.auth.FacebookAuthProvider()
   //   );
   // }
 
-  logout() {
+  logout():void {
     this.angularFireAuth.signOut();
   }
 

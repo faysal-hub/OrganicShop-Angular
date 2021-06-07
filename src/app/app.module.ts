@@ -1,4 +1,3 @@
-import { AuthService } from './auth.service';
 import { environment } from './../environments/environment';
 
 import { NgModule } from '@angular/core';
@@ -22,6 +21,10 @@ import { AdminProductsComponent } from './admin/admin-products/admin-products.co
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { LoginComponent } from './login/login.component';
 
+import { AuthService } from './auth.service';
+import { AuthGuard } from './auth-guard.service';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +46,10 @@ import { LoginComponent } from './login/login.component';
     AngularFireDatabaseModule,
     NgbModule,
   ],
-  providers: [AuthService],
+  providers: [
+    AuthService,
+    AuthGuard,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
