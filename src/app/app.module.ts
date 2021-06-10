@@ -21,11 +21,13 @@ import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { LoginComponent } from './login/login.component';
+import { ProductFormComponent } from './admin/product-form/product-form.component';
 
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth-guard.service';
 import { AdminAuthGuard } from './admin-auth-guard.service';
 import { UsersService } from './user.service';
+
 
 
 @NgModule({
@@ -41,6 +43,7 @@ import { UsersService } from './user.service';
     AdminProductsComponent,
     AdminOrdersComponent,
     LoginComponent,
+    ProductFormComponent,
   ],
   imports: [
     BrowserModule,

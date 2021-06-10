@@ -33,7 +33,7 @@ export class AppComponent {
   }
 
   ngOnInit(): void {
-    this.bnIdle.startWatching(600).subscribe((isTimedOut: boolean) => {
+    this.bnIdle.startWatching(3000).subscribe((isTimedOut: boolean) => {
       if (isTimedOut) {
           this.auth.logout();
       }
