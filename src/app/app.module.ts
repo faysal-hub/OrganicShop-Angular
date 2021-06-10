@@ -1,4 +1,3 @@
-
 import { environment } from './../environments/environment';
 
 import { NgModule } from '@angular/core';
@@ -8,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BnNgIdleService } from 'bn-ng-idle';
 import { FormsModule } from '@angular/forms';
+import { CustomFormsModule } from 'ng2-validation';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
@@ -56,6 +56,7 @@ import { ProductsService } from './products.service';
     AngularFireDatabaseModule,
     NgbModule,
     FormsModule,
+    CustomFormsModule
   ],
   providers: [
     AuthService,

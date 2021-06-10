@@ -19,10 +19,11 @@
     <label for="price" class="form-label">Price</label>
     <div class="input-group mb-3">
         <span class="input-group-text">€</span>
-        <input required #price="ngModel" ngModel name="price" type="number" id="price" class="form-control" placeholder="Product Price">
+        <input required [min]="0" #price="ngModel" ngModel name="price" type="number" id="price" class="form-control" placeholder="Product Price">
     </div>
     <div class="alert alert-danger" *ngIf="price.touched && price.invalid">
         <div *ngIf="price.errors.required">Price is required.</div>
+        <div *ngIf="price.errors.min">Price should be positive.</div>
     </div>
 
     <label for="category" class="form-label">Category</label>
@@ -40,10 +41,11 @@
 
     <label for="imageUrl" class="form-label">Image URL</label>
     <div class="input-group mb-3">
-        <input required #imageUrl="ngModel" ngModel name="imageUrl" type="text" class="form-control" id="imageUrl" placeholder="https://www.example.com" >
+        <input required url #imageUrl="ngModel" ngModel name="imageUrl" type="text" class="form-control" id="imageUrl" placeholder="https://www.example.com" >
     </div>
     <div class="alert alert-danger" *ngIf="imageUrl.touched && imageUrl.invalid">
         <div *ngIf="imageUrl.errors.required">Image URL is required.</div>
+        <div *ngIf="imageUrl.errors.url">Please enter a valid URL.</div>
     </div>
 
     <button type="submit" [disabled]="f.invalid" class="btn btn-success">Save</button>
