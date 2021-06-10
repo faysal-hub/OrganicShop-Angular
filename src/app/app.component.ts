@@ -3,6 +3,8 @@ import { AuthService } from './auth.service';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { BnNgIdleService } from 'bn-ng-idle';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -10,6 +12,7 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   constructor(
+    private bnIdle: BnNgIdleService,
     private usersService: UsersService,
     private auth: AuthService,
     private router: Router
@@ -25,6 +28,14 @@ export class AppComponent {
 
         this.router.navigateByUrl(returnUrl);
         localStorage.removeItem('returnUrl');
+      }
+    });
+  }
+
+  ngOnInit(): void {
+    this.bnIdle.startWatching(600).subscribe((isTimedOut: boolean) => {
+      if (isTimedOut) {
+          this.auth.logout();
       }
     });
   }

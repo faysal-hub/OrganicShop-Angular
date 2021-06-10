@@ -5,6 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BnNgIdleService } from 'bn-ng-idle';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
@@ -53,6 +54,7 @@ import { UsersService } from './user.service';
     AuthGuard,
     AdminAuthGuard,
     UsersService,
+    BnNgIdleService,
   ],
   bootstrap: [AppComponent],
 })
