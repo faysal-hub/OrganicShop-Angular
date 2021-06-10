@@ -1,6 +1,6 @@
 import firebase from 'firebase/app';
 import { Product } from './models/product';
-import { AngularFireDatabase } from '@angular/fire/database';
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -8,10 +8,17 @@ import { Injectable } from '@angular/core';
 })
 export class ProductsService {
   private readonly dbPath = '/products';
+  private products: AngularFireList<Product>;
 
-  constructor(private db: AngularFireDatabase) {}
+  constructor(private db: AngularFireDatabase) {
+    this.products = this.db.list<Product>(this.dbPath);
+  }
+
+  getAll(): AngularFireList<Product> {
+    return this.products;
+  }
 
   create(product: Product): firebase.database.ThenableReference {
-    return this.db.list<Product>(this.dbPath).push(product);
+     return this.products.push(product);
   }
 }
