@@ -27,7 +27,7 @@ import { AuthService } from './auth.service';
 import { AuthGuard } from './auth-guard.service';
 import { AdminAuthGuard } from './admin-auth-guard.service';
 import { UsersService } from './user.service';
-
+import { CategoriesService } from './category.service';
 
 
 @NgModule({
@@ -58,6 +58,7 @@ import { UsersService } from './user.service';
     AdminAuthGuard,
     UsersService,
     BnNgIdleService,
+    CategoriesService,
   ],
   bootstrap: [AppComponent],
 })

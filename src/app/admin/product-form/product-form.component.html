@@ -17,11 +17,11 @@
 
     <label for="category" class="form-label">Category</label>
     <div class="input-group mb-3">
-        <select id="imageUrl" class="form-select">
+        <select id="category" class="form-select">
             <option selected> In which category your product belongs </option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
+            <option *ngFor="let category of categories$ | async" [value]="category.key">
+                {{ category.name }}
+            </option>
         </select>
     </div>
 
