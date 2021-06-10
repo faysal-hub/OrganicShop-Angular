@@ -1,23 +1,23 @@
-<form>
+<form  #f="ngForm" (ngSubmit)="save(f)">
     <label for="productNumber" class="form-label">Product ID</label>
     <div class="input-group mb-3">
-        <input type="number" class="form-control" id="productNumber" placeholder="Product Number">
+        <input ngModel name="productNumber" type="number" class="form-control" id="productNumber" placeholder="Product Number">
     </div>
 
     <label for="title" class="form-label">Title</label>
     <div class="input-group mb-3">
-        <input type="text" class="form-control" id="title" placeholder="Product Name">
+        <input ngModel name="title" type="text" class="form-control" id="title" placeholder="Product Name">
     </div>
     
     <label for="price" class="form-label">Price</label>
     <div class="input-group mb-3">
         <span class="input-group-text">€</span>
-        <input type="number" id="price" class="form-control" placeholder="Product Price">
+        <input ngModel name="price" type="number" id="price" class="form-control" placeholder="Product Price">
     </div>
 
     <label for="category" class="form-label">Category</label>
     <div class="input-group mb-3">
-        <select id="category" class="form-select">
+        <select ngModel name="category" id="category" class="form-select">
             <option selected> In which category your product belongs </option>
             <option *ngFor="let category of categories$ | async" [value]="category.key">
                 {{ category.name }}
@@ -27,9 +27,9 @@
 
     <label for="imageUrl" class="form-label">Image URL</label>
     <div class="input-group mb-3">
-        <input type="text" class="form-control" id="imageUrl" placeholder="https://www.example.com" >
+        <input ngModel name="imageUrl" type="text" class="form-control" id="imageUrl" placeholder="https://www.example.com" >
     </div>
 
-    <button type="button" class="btn btn-success">Save</button>
+    <button type="submit" class="btn btn-success">Save</button>
 
 </form>

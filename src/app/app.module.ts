@@ -1,3 +1,4 @@
+
 import { environment } from './../environments/environment';
 
 import { NgModule } from '@angular/core';
@@ -6,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BnNgIdleService } from 'bn-ng-idle';
+import { FormsModule } from '@angular/forms';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
@@ -28,6 +30,8 @@ import { AuthGuard } from './auth-guard.service';
 import { AdminAuthGuard } from './admin-auth-guard.service';
 import { UsersService } from './user.service';
 import { CategoriesService } from './category.service';
+import { ProductsService } from './products.service';
+
 
 
 @NgModule({
@@ -51,6 +55,7 @@ import { CategoriesService } from './category.service';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     NgbModule,
+    FormsModule,
   ],
   providers: [
     AuthService,
@@ -59,6 +64,7 @@ import { CategoriesService } from './category.service';
     UsersService,
     BnNgIdleService,
     CategoriesService,
+    ProductsService,
   ],
   bootstrap: [AppComponent],
 })

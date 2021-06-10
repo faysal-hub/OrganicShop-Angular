@@ -1,9 +1,11 @@
+import { ProductsService } from './../../products.service';
 import { Observable } from 'rxjs';
 
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Category } from 'src/app/models/category';
 import { map } from 'rxjs/operators';
 import { CategoriesService } from 'src/app/category.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-product-form',
@@ -12,7 +14,10 @@ import { CategoriesService } from 'src/app/category.service';
 })
 export class ProductFormComponent {
   categories$: Observable<Category[]>;
-  constructor(private categoriesService: CategoriesService) {
+  constructor(
+    private categoriesService: CategoriesService,
+    private productsService: ProductsService
+  ) {
     this.categories$ = this.categoriesService
       .getCategories()
       .snapshotChanges()
@@ -21,5 +26,10 @@ export class ProductFormComponent {
           categories.map((c) => ({ key: c.key, ...c.payload.val() }))
         )
       );
+  }
+
+  save(f: NgForm) {
+    this.productsService.create(f.value);
+    
   }
 }
