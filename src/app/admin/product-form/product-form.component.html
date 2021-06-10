@@ -1,53 +1,84 @@
-<form  #f="ngForm" (ngSubmit)="save(f)">
-    <label for="productNumber" class="form-label">Product ID</label>
-    <div class="input-group mb-3">
-        <input required #productNumber="ngModel" ngModel name="productNumber" type="number" class="form-control" id="productNumber" placeholder="Product Number">
-    </div>
-    <div class="alert alert-danger" *ngIf="productNumber.touched && productNumber.invalid">
-        <div *ngIf="productNumber.errors.required">Product number is required.</div>
+<div class="row">
+    <div class="col-md-6">
+        <form #f="ngForm" (ngSubmit)="save(f)">
+            <div>
+                <label for="productNumber" class="form-label">Product ID</label>
+                <div class="input-group mb-3">
+                    <input required [min]="1" #productNumber="ngModel" ngModel name="productNumber" type="number" class="form-control"
+                        id="productNumber" placeholder="Product Number">
+                </div>
+                <div class="alert alert-danger" *ngIf="productNumber.touched && productNumber.invalid">
+                    <div *ngIf="productNumber.errors.required">Product number is required.</div>
+                    <div *ngIf="productNumber.errors.min">Product number should be positive.</div>
+                </div>
+            </div>
+
+            <div>
+                <label for="title" class="form-label">Title</label>
+                <div class="input-group mb-3">
+                    <input required #title="ngModel" ngModel name="title" type="text" class="form-control" id="title"
+                        placeholder="Product Name">
+                </div>
+                <div class="alert alert-danger" *ngIf="title.touched && title.invalid">
+                    <div *ngIf="title.errors.required">Title is required.</div>
+                </div>
+            </div>
+
+            <div>
+                <label for="price" class="form-label">Price</label>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">€</span>
+                    <input required [min]="0" #price="ngModel" ngModel name="price" type="number" id="price" class="form-control"
+                        placeholder="Product Price">
+                </div>
+                <div class="alert alert-danger" *ngIf="price.touched && price.invalid">
+                    <div *ngIf="price.errors.required">Price is required.</div>
+                    <div *ngIf="price.errors.min">Price should be positive.</div>
+                </div>
+            </div>
+
+
+            <div>
+                <label for="category" class="form-label">Category</label>
+                <div class="input-group mb-3">
+                    <select required #category="ngModel" ngModel name="category" id="category" class="form-select">
+                        <!-- <option selected> In which category your product belongs </option> -->
+                        <option *ngFor="let category of categories$ | async" [value]="category.key">
+                            {{ category.name }}
+                        </option>
+                    </select>
+                </div>
+                <div class="alert alert-danger" *ngIf="category.touched && category.invalid">
+                    <div *ngIf="category.errors.required">Category is required.</div>
+                </div>
+            </div>
+
+            <div>
+                <label for="imageUrl" class="form-label">Image URL</label>
+                <div class="input-group mb-3">
+                    <input required url #imageUrl="ngModel" ngModel name="imageUrl" type="text" class="form-control" id="imageUrl"
+                        placeholder="https://www.example.com">
+                </div>
+                <div class="alert alert-danger" *ngIf="imageUrl.touched && imageUrl.invalid">
+                    <div *ngIf="imageUrl.errors.required">Image URL is required.</div>
+                    <div *ngIf="imageUrl.errors.url">Please enter a valid URL.</div>
+                </div>
+            </div>
+
+            <button type="submit" [disabled]="f.invalid" class="btn btn-success">Save</button>
+        </form>
     </div>
 
-    <label for="title" class="form-label">Title</label>
-    <div class="input-group mb-3">
-        <input required #title="ngModel" ngModel name="title" type="text" class="form-control" id="title" placeholder="Product Name">
-        
+    <div class="col-md-6">
+        <div class="col-md-6">
+            <div *ngIf="title.value" class="card" style="width: 25rem;">
+                <img class="card-img-top" [src]="imageUrl.value">
+                <div class="card-body">
+                    <h5 class="card-title">{{ title.value }}</h5>
+                    <p class="card-text">{{ price.value | currency:'EUR':true }}</p>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="alert alert-danger" *ngIf="title.touched && title.invalid">
-        <div *ngIf="title.errors.required">Title is required.</div>
-    </div>
-    
-    <label for="price" class="form-label">Price</label>
-    <div class="input-group mb-3">
-        <span class="input-group-text">€</span>
-        <input required [min]="0" #price="ngModel" ngModel name="price" type="number" id="price" class="form-control" placeholder="Product Price">
-    </div>
-    <div class="alert alert-danger" *ngIf="price.touched && price.invalid">
-        <div *ngIf="price.errors.required">Price is required.</div>
-        <div *ngIf="price.errors.min">Price should be positive.</div>
-    </div>
+</div>
 
-    <label for="category" class="form-label">Category</label>
-    <div class="input-group mb-3">
-        <select required #category="ngModel" ngModel name="category" id="category" class="form-select">
-            <!-- <option selected> In which category your product belongs </option> -->
-            <option *ngFor="let category of categories$ | async" [value]="category.key">
-                {{ category.name }}
-            </option>
-        </select>
-    </div>
-    <div class="alert alert-danger" *ngIf="category.touched && category.invalid">
-        <div *ngIf="category.errors.required">Category is required.</div>
-    </div>
-
-    <label for="imageUrl" class="form-label">Image URL</label>
-    <div class="input-group mb-3">
-        <input required url #imageUrl="ngModel" ngModel name="imageUrl" type="text" class="form-control" id="imageUrl" placeholder="https://www.example.com" >
-    </div>
-    <div class="alert alert-danger" *ngIf="imageUrl.touched && imageUrl.invalid">
-        <div *ngIf="imageUrl.errors.required">Image URL is required.</div>
-        <div *ngIf="imageUrl.errors.url">Please enter a valid URL.</div>
-    </div>
-
-    <button type="submit" [disabled]="f.invalid" class="btn btn-success">Save</button>
-
-</form>
