@@ -66,6 +66,7 @@
             </div>
 
             <button type="submit" [disabled]="f.invalid" class="btn btn-success">Save</button>
+            <button *ngIf="id" type="button" (click)="delete()" class="btn btn-danger">Delete</button>
         </form>
     </div>
 
