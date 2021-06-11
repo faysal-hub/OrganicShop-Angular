@@ -33,7 +33,6 @@ import { CategoriesService } from './category.service';
 import { ProductsService } from './products.service';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,

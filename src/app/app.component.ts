@@ -20,15 +20,15 @@ export class AppComponent {
     this.auth.user$.subscribe((user) => {
       let returnUrl = localStorage.getItem('returnUrl');
 
-      if (user && returnUrl) {
-        this.usersService.save(user.uid, {
+      if (!user || !returnUrl) return;
+
+      this.usersService.save(user.uid, {
           email: user.email,
           name: user.displayName,
-        });
+      });
 
-        this.router.navigateByUrl(returnUrl);
-        localStorage.removeItem('returnUrl');
-      }
+      this.router.navigateByUrl(returnUrl);
+      localStorage.removeItem('returnUrl');
     });
   }
 
