@@ -1,4 +1,5 @@
 import { environment } from './../environments/environment';
+import { TableModule } from 'ngx-easy-table';
 
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -56,6 +57,7 @@ import { ProductsService } from './products.service';
     NgbModule,
     FormsModule,
     CustomFormsModule,
+    TableModule
   ],
   providers: [
     AuthService,

@@ -17,7 +17,13 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/OrganicShop-Angular",
-            "allowedCommonJsDependencies": ["lodash"],
+            "allowedCommonJsDependencies": [
+              "babel-runtime/helpers/extends",
+              "babel-runtime/helpers/slicedToArray",
+              "babel-runtime/helpers/createClass",
+              "babel-runtime/core-js/get-iterator",
+              "ng2-validation"
+            ],
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -26,6 +32,8 @@
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
               "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/ngx-easy-table/style.css",
+              "node_modules/typeface-montserrat/index.css",
               "src/styles.css"
             ],
             "scripts": []
