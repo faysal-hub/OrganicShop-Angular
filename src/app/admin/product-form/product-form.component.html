@@ -4,7 +4,7 @@
             <div>
                 <label for="productNumber" class="form-label">Product ID</label>
                 <div class="input-group mb-3">
-                    <input required [min]="1" #productNumber="ngModel" ngModel name="productNumber" type="number" class="form-control"
+                    <input required [min]="1" #productNumber="ngModel" [(ngModel)]="product.productNumber" name="productNumber" type="number" class="form-control"
                         id="productNumber" placeholder="Product Number">
                 </div>
                 <div class="alert alert-danger" *ngIf="productNumber.touched && productNumber.invalid">
@@ -16,7 +16,7 @@
             <div>
                 <label for="title" class="form-label">Title</label>
                 <div class="input-group mb-3">
-                    <input required #title="ngModel" ngModel name="title" type="text" class="form-control" id="title"
+                    <input required #title="ngModel" [(ngModel)]="product.title" name="title" type="text" class="form-control" id="title"
                         placeholder="Product Name">
                 </div>
                 <div class="alert alert-danger" *ngIf="title.touched && title.invalid">
@@ -28,7 +28,7 @@
                 <label for="price" class="form-label">Price</label>
                 <div class="input-group mb-3">
                     <span class="input-group-text">€</span>
-                    <input required [min]="0" #price="ngModel" ngModel name="price" type="number" id="price" class="form-control"
+                    <input required [min]="0" #price="ngModel" [(ngModel)]="product.price" name="price" type="number" id="price" class="form-control"
                         placeholder="Product Price">
                 </div>
                 <div class="alert alert-danger" *ngIf="price.touched && price.invalid">
@@ -41,7 +41,7 @@
             <div>
                 <label for="category" class="form-label">Category</label>
                 <div class="input-group mb-3">
-                    <select required #category="ngModel" ngModel name="category" id="category" class="form-select">
+                    <select required #category="ngModel" [(ngModel)]="product.category" name="category" id="category" class="form-select">
                         <!-- <option selected> In which category your product belongs </option> -->
                         <option *ngFor="let category of categories$ | async" [value]="category.key">
                             {{ category.name }}
@@ -56,7 +56,7 @@
             <div>
                 <label for="imageUrl" class="form-label">Image URL</label>
                 <div class="input-group mb-3">
-                    <input required url #imageUrl="ngModel" ngModel name="imageUrl" type="text" class="form-control" id="imageUrl"
+                    <input required url #imageUrl="ngModel" [(ngModel)]="product.imageUrl" name="imageUrl" type="text" class="form-control" id="imageUrl"
                         placeholder="https://www.example.com">
                 </div>
                 <div class="alert alert-danger" *ngIf="imageUrl.touched && imageUrl.invalid">
@@ -72,10 +72,10 @@
     <div class="col-md-6">
         <div class="col-md-6">
             <div *ngIf="title.value" class="card" style="width: 25rem;">
-                <img class="card-img-top" [src]="imageUrl.value">
+                <img class="card-img-top" [src]="product.imageUrl">
                 <div class="card-body">
-                    <h5 class="card-title">{{ title.value }}</h5>
-                    <p class="card-text">{{ price.value | currency:'EUR':true }}</p>
+                    <h5 class="card-title">{{ product.title }}</h5>
+                    <p class="card-text">{{ product.price | currency:'EUR':string }}</p>
                 </div>
             </div>
         </div>

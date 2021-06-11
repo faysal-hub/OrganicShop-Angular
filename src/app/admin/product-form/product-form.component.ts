@@ -1,8 +1,10 @@
 import { Observable } from 'rxjs';
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { map } from 'rxjs/operators';
-import { Router } from '@angular/router';
+import { map, take } from 'rxjs/operators';
+import { Router, ActivatedRoute } from '@angular/router';
+
+import { Product } from './../../models/product';
 
 import { Category } from 'src/app/models/category';
 
@@ -16,25 +18,51 @@ import { ProductsService } from './../../products.service';
   styleUrls: ['./product-form.component.css'],
 })
 export class ProductFormComponent {
+  product: any = {};
   categories$: Observable<Category[]>;
+  id: string;
+
   constructor(
     private categoriesService: CategoriesService,
     private productsService: ProductsService,
-    private router: Router
+    private router: Router,
+    private activatedRoute: ActivatedRoute
   ) {
-    this.categories$ = this.categoriesService
-      .getCategories()
-      .snapshotChanges()
-      .pipe(
-        map((categories) =>
-          categories.map((c) => ({ key: c.key, ...c.payload.val() }))
-        )
-      );
+    this.init();
   }
 
-  save(f: NgForm) {
-    this.productsService
-      .create(f.value)
-      .then((ref) => this.router.navigate(['/admin/products']));
+  init() {
+    this.getProductOnEdit();
+    this.getCategories();
   }
+
+  getProductOnEdit() {
+    this.id = this.activatedRoute.snapshot.paramMap.get('id');
+
+    if (!this.id) return;
+
+    this.productsService
+      .get(this.id)
+      .snapshotChanges()
+      .pipe(take(1))
+      .pipe(map((sp) => ({ key: sp.key, ...sp.payload.val() })))
+      .subscribe((p) => (this.product = p));
+  }
+
+  getCategories() {
+    this.categories$ = this.categoriesService.getCategories()
+    .snapshotChanges()
+    .pipe(map(scs => scs.map(sc => ({ key: sc.key, ...sc.payload.val() }))));
+   }
+
+
+
+  save(f: NgForm) {
+     if (this.id)
+      this.productsService.update(this.product.key, f.value);
+    else
+      this.productsService.create(f.value);
+
+    this.router.navigate(['/admin/products']);
+   }
 }

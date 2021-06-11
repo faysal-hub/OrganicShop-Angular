@@ -56,7 +56,7 @@ import { ProductsService } from './products.service';
     AngularFireDatabaseModule,
     NgbModule,
     FormsModule,
-    CustomFormsModule
+    CustomFormsModule,
   ],
   providers: [
     AuthService,
