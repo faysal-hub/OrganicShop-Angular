@@ -1,3 +1,4 @@
+
 import { environment } from './../environments/environment';
 import { TableModule } from 'ngx-easy-table';
 
@@ -26,6 +27,7 @@ import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.componen
 import { LoginComponent } from './login/login.component';
 import { ProductsFilterComponent } from './products/products-filter/products-filter.component';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
+import { ProductCardComponent } from './product-card/product-card.component';
 
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth-guard.service';
@@ -33,7 +35,8 @@ import { AdminAuthGuard } from './admin-auth-guard.service';
 import { UsersService } from './user.service';
 import { CategoriesService } from './category.service';
 import { ProductsService } from './products.service';
-import { ProductCardComponent } from './product-card/product-card.component';
+import { CartService } from './cart.service';
+
 
 
 @NgModule({
@@ -71,6 +74,7 @@ import { ProductCardComponent } from './product-card/product-card.component';
     BnNgIdleService,
     CategoriesService,
     ProductsService,
+    CartService,
   ],
   bootstrap: [AppComponent],
 })
