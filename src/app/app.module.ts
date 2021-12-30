@@ -24,6 +24,7 @@ import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { LoginComponent } from './login/login.component';
+import { ProductsFilterComponent } from './products/products-filter/products-filter.component';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
 
 import { AuthService } from './auth.service';
@@ -32,6 +33,7 @@ import { AdminAuthGuard } from './admin-auth-guard.service';
 import { UsersService } from './user.service';
 import { CategoriesService } from './category.service';
 import { ProductsService } from './products.service';
+import { ProductCardComponent } from './product-card/product-card.component';
 
 
 @NgModule({
@@ -48,6 +50,8 @@ import { ProductsService } from './products.service';
     AdminOrdersComponent,
     LoginComponent,
     ProductFormComponent,
+    ProductsFilterComponent,
+    ProductCardComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,7 +61,7 @@ import { ProductsService } from './products.service';
     NgbModule,
     FormsModule,
     CustomFormsModule,
-    TableModule
+    TableModule,
   ],
   providers: [
     AuthService,
