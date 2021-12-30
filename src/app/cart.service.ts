@@ -25,6 +25,17 @@ export class CartService {
   }
 
   async addToCart(product: Product): Promise<void> {
+    return this.updateQuantity(product, 1);
+  }
+
+  async removeFromCart(product: Product): Promise<void> {
+    return this.updateQuantity(product, -1);
+  }
+
+  private async updateQuantity(
+    product: Product,
+    change: number
+  ): Promise<void> {
     let cartId = await this.getOrCreateCartId();
     let cartLine$ = this.getCartLine(cartId, product.key);
 
@@ -35,7 +46,7 @@ export class CartService {
       .subscribe((cl) =>
         cartLine$.update({
           product: product,
-          quantity: (cl.quantity || 0) + 1,
+          quantity: (cl.quantity || 0) + change,
         })
       );
   }

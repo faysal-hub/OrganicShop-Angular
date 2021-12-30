@@ -22,6 +22,12 @@ export class ProductCardComponent {
     this.cartService.addToCart(this.product);
   }
 
+  removeFromCart(): void {
+    if (this.getQuantity() == 0) return;
+
+    this.cartService.removeFromCart(this.product);
+  }
+
   getQuantity(): number {
     if (!this.cart?.cartLines) return 0;
 
