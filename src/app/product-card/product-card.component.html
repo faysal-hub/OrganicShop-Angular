@@ -4,8 +4,9 @@
         <h5 class="card-title">{{ product.title }}</h5>
         <p class="card-text">{{ product.price | currency:'EUR' }}</p>
     </div>
-    <div class="card-footer" class="d-grid gap-2">
-        <button *ngIf="showActions" (click)="addToCart(product)" class="btn btn-primary btn-block">Add to Cart</button>
+    <div *ngIf="showActions" class="card-footer" class="d-grid gap-2">
+        <button (click)="addToCart()" class="btn btn-primary btn-block">Add to Cart</button>
+        <div>{{ getQuantity() }}</div>
     </div>
 </div>
 

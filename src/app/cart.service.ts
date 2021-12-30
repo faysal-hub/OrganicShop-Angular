@@ -1,9 +1,15 @@
 import { CartLine } from './models/cartLine';
-import { AngularFireDatabase, AngularFireObject } from '@angular/fire/database';
+import {
+  AngularFireDatabase,
+  AngularFireObject,
+  AngularFireList,
+} from '@angular/fire/database';
 import { Injectable } from '@angular/core';
 import firebase from 'firebase/app';
 import { Product } from './models/product';
 import { take, map } from 'rxjs/operators';
+
+import { Cart } from './models/cart';
 
 @Injectable({
   providedIn: 'root',
@@ -12,6 +18,11 @@ export class CartService {
   private readonly dbPath = '/carts';
 
   constructor(private db: AngularFireDatabase) {}
+
+  async getCart(): Promise<AngularFireObject<Cart>> {
+    let cartId = await this.getOrCreateCartId();
+    return this.db.object<Cart>(`${this.dbPath}/${cartId}`);
+  }
 
   async addToCart(product: Product): Promise<void> {
     let cartId = await this.getOrCreateCartId();

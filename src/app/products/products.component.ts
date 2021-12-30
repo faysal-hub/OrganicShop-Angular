@@ -1,23 +1,30 @@
 import { ActivatedRoute } from '@angular/router';
 import { ProductsService } from './../products.service';
 import { map, switchMap } from 'rxjs/operators';
-import { Observable, of } from 'rxjs';
-import { Component } from '@angular/core';
+import { Observable, of, Subscription } from 'rxjs';
+import { Component, OnDestroy } from '@angular/core';
 import { Product } from '../models/product';
+
+import { Cart } from './../models/cart';
+import { CartService } from './../cart.service';
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css'],
 })
-export class ProductsComponent {
+export class ProductsComponent implements OnDestroy {
   products$: Observable<Product[]>;
+  cart: Cart;
+  cartSubscription: Subscription;
 
   constructor(
     private productsService: ProductsService,
+    private cartService: CartService,
     private route: ActivatedRoute
   ) {
     this.getProducts();
+    this.getCart();
   }
 
   private getProducts(): void {
@@ -48,5 +55,17 @@ export class ProductsComponent {
       })
     );
   }
+
+  private async getCart() {
+    this.cartSubscription = (await this.cartService.getCart())
+      .snapshotChanges()
+      .pipe(map((sc) => ({ key: sc.key, ...sc.payload.val() })))
+      .subscribe((c) => (this.cart = c));
+  }
+
+  ngOnDestroy(): void {
+    this.cartSubscription.unsubscribe();
+  }
+  
 }
 
