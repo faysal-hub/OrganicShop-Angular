@@ -1,17 +1,23 @@
 import { CartLine } from './cartLine';
 import { Product } from './product';
 export class Cart {
+  public items: CartLine[] = [];
+
   constructor(
     public key: string,
-    public cartLines: CartLine[],
+    public cartLines: { [productId: string]: CartLine },
     public createdOn: string
-  ) {}
+  ) {
+    for (let productId in this.cartLines) {
+      this.items.push(this.cartLines[productId]);
+    }
+  }
 
   get itemsCount(): number {
     let count = 0;
 
-    for (let productId in this.cartLines) {
-      count += this.cartLines[productId].quantity;
+    for (let cartLine of this.items) {
+       count += cartLine.quantity;
     }
 
     return count;

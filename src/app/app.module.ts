@@ -36,6 +36,7 @@ import { UsersService } from './user.service';
 import { CategoriesService } from './category.service';
 import { ProductsService } from './products.service';
 import { CartService } from './cart.service';
+import { ProductQuantityComponent } from './product-quantity/product-quantity.component';
 
 
 
@@ -55,6 +56,7 @@ import { CartService } from './cart.service';
     ProductFormComponent,
     ProductsFilterComponent,
     ProductCardComponent,
+    ProductQuantityComponent,
   ],
   imports: [
     BrowserModule,
