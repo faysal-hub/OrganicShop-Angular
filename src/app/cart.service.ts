@@ -45,7 +45,8 @@ export class CartService {
       .pipe(map((scl) => ({ key: scl.key, ...scl.payload.val() })))
       .subscribe((cl) =>
         cartLine$.update({
-          product: product,
+          title: product.title,
+          price: product.price,
           quantity: (cl.quantity || 0) + change,
         })
       );

@@ -2,6 +2,7 @@ import { Product } from './product';
 
 export interface CartLine {
   key: string;
-  product: Product;
+  title: string;
+  price: number;
   quantity: number;
 }
