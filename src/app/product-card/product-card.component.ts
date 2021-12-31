@@ -23,7 +23,7 @@ export class ProductCardComponent {
   }
 
   removeFromCart(): void {
-    if (this.getQuantity() == 0) return;
+   if (this.cart.getQuantity(this.product) == 0) return;
 
     this.cartService.removeFromCart(this.product);
   }
