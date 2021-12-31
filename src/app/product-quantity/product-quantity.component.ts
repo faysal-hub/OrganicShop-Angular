@@ -19,8 +19,6 @@ export class ProductQuantityComponent {
   }
 
   removeFromCart(): void {
-    if (this.cart.getQuantity(this.product) == 0) return;
-
     this.cartService.removeFromCart(this.product);
   }
 }

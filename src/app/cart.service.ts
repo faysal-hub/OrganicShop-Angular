@@ -44,10 +44,11 @@ export class CartService {
       .pipe(take(1))
       .pipe(map((scl) => ({ key: scl.key, ...scl.payload.val() })))
       .subscribe((cl) => {
+        if (cl.quantity + change === 0) return this.removeCartLine(cartLine$);
+
         return this.updateCartLine(cartLine$, {
           title: product.title,
           price: product.price,
-          imageUrl: product.imageUrl,
           quantity: (cl.quantity || 0) + change,
         });
       });
@@ -84,5 +85,11 @@ export class CartService {
     cartLine: any
   ): Promise<void> {
     return cartLine$.update(cartLine);
+  }
+
+  private removeCartLine(
+    cartLine$: AngularFireObject<CartLine>
+  ): Promise<void> {
+    return cartLine$.remove();
   }
 }
