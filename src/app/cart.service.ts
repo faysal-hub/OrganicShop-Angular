@@ -43,13 +43,14 @@ export class CartService {
       .snapshotChanges()
       .pipe(take(1))
       .pipe(map((scl) => ({ key: scl.key, ...scl.payload.val() })))
-      .subscribe((cl) =>
-        cartLine$.update({
+      .subscribe((cl) => {
+        return this.updateCartLine(cartLine$, {
           title: product.title,
           price: product.price,
+          imageUrl: product.imageUrl,
           quantity: (cl.quantity || 0) + change,
-        })
-      );
+        });
+      });
   }
 
   private async getOrCreateCartId(): Promise<string> {
@@ -76,5 +77,12 @@ export class CartService {
     return this.db.object<CartLine>(
       `${this.dbPath}/${cartId}/cartLines/${productId}`
     );
+  }
+
+  private updateCartLine(
+    cartLine$: AngularFireObject<CartLine>,
+    cartLine: any
+  ): Promise<void> {
+    return cartLine$.update(cartLine);
   }
 }
