@@ -4,6 +4,9 @@ import { AuthService } from './../auth.service';
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../cart.service';
 
+import { Cart } from '../models/cart';
+import { map } from 'rxjs/operators';
+
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -11,7 +14,7 @@ import { CartService } from '../cart.service';
 })
 export class NavbarComponent implements OnInit {
   appUser$: Observable<AppUser>;
-  cartLinesCount: number;
+  cart$: Observable<Cart>;
 
   constructor(
     private authService: AuthService,
@@ -21,11 +24,18 @@ export class NavbarComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     this.appUser$ = this.authService.AppUser$;
 
-    (await this.cartService.getCart()).valueChanges().subscribe((c) => {
-      this.cartLinesCount = 0;
-      for (let productId in c.cartLines)
-        this.cartLinesCount += c.cartLines[productId].quantity;
-    });
+    this.cart$ = (await this.cartService.getCart())
+      .snapshotChanges()
+      .pipe(
+        map(
+          (sc) =>
+            new Cart(
+              sc.key,
+              sc.payload.val().cartLines,
+              sc.payload.val().createdOn
+            )
+        )
+      );
   }
 
   logout() {
