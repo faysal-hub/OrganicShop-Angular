@@ -9,7 +9,9 @@ export class Cart {
     public createdOn: string
   ) {
     for (let productId in this.cartLines) {
-      this.items.push(this.cartLines[productId]);
+      this.items.push(
+        new CartLine({ key: productId, ...this.cartLines[productId] })
+      );
     }
   }
 
@@ -17,10 +19,19 @@ export class Cart {
     let count = 0;
 
     for (let cartLine of this.items) {
-       count += cartLine.quantity;
+      count += cartLine.quantity;
     }
 
     return count;
+  }
+
+  get totalPrice(): number {
+    let total = 0;
+    for (let item of this.items) {
+      total += item.totalPrice;
+    }
+
+    return total;
   }
 
   getQuantity(product: Product): number {

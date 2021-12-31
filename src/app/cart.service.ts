@@ -49,6 +49,7 @@ export class CartService {
         return this.updateCartLine(cartLine$, {
           title: product.title,
           price: product.price,
+          imageUrl: product.imageUrl,
           quantity: (cl.quantity || 0) + change,
         });
       });
