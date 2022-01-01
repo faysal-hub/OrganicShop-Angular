@@ -1,11 +1,11 @@
-<div class="row">
+<div class="row g-0">
     <div class="col-3">
-        <button (click)="removeFromCart()" class="btn btn-secondary btn-block">-</button>
+        <button (click)="removeFromCart()" class="btn btn-secondary btn-block float-start">-</button>
     </div>
     <div class="col text-center">
         {{ cart.getQuantity(product) }} in cart
     </div>
-    <div class="col-3">
-        <button (click)="addToCart()" class="btn btn-secondary btn-block">+</button>
+    <div  class="col-3">
+        <button (click)="addToCart()" class="btn btn-secondary btn-block float-end">+</button>
     </div>
 </div>
