@@ -1,11 +1,12 @@
 <div class="sticky-top">
-    <div class="card">
+    <div class="card" *ngIf="categories$ | async as categories">
         <ul class="list-group list-group-flush">
             <a class="list-group-item list-group-item-action" routerLink="/" routerLinkActive="active"
                 [routerLinkActiveOptions]="{ exact: true }">All Categories</a>
-            <a class="list-group-item list-group-item-action" *ngFor="let category of categories$ | async"
-                routerLink="/" [queryParams]="{ category: category.key }" routerLinkActive="active">{{ category.name
-                }}</a>
+            <a class="list-group-item list-group-item-action" *ngFor="let category of categories"
+                routerLink="/" [queryParams]="{ category: category.key }" routerLinkActive="active">
+                {{ category.name}}
+            </a>
         </ul>
     </div>
 </div>
