@@ -1,4 +1,5 @@
 import { CartLine } from './models/cartLine';
+import { Cart } from './models/cart';
 import {
   AngularFireDatabase,
   AngularFireObject,
@@ -9,7 +10,6 @@ import firebase from 'firebase/app';
 import { Product } from './models/product';
 import { take, map } from 'rxjs/operators';
 
-import { Cart } from './models/cart';
 
 @Injectable({
   providedIn: 'root',
@@ -30,6 +30,13 @@ export class CartService {
 
   async removeFromCart(product: Product): Promise<void> {
     return this.updateQuantity(product, -1);
+  }
+
+  async removeItem(product: Product) {
+    let cartId = await this.getOrCreateCartId();
+    let cartLines$ = this.getCartLine(cartId, product.key);
+
+    return this.removeCartItem(cartLines$);
   }
 
   async clearCart(): Promise<void> {
@@ -108,6 +115,12 @@ export class CartService {
 
   private removeCartLines(
     cartLines$: AngularFireObject<CartLine>
+  ): Promise<void> {
+    return cartLines$.remove();
+  }
+
+  private removeCartItem(
+    cartLines$: AngularFireObject<CartLine>,
   ): Promise<void> {
     return cartLines$.remove();
   }

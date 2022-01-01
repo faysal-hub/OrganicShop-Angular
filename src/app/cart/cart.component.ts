@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Cart } from '../models/cart';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { Product } from '../models/product';
 
 @Component({
   selector: 'cart',
@@ -31,5 +32,9 @@ export class CartComponent implements OnInit {
 
   clearCart() {
     this.cartService.clearCart();
+  }
+
+  removeItem(item: Product) {
+    this.cartService.removeItem(item);
   }
 }
