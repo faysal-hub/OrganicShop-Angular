@@ -4,3 +4,11 @@
     border-radius: 100%;
     background-size: cover;
 } 
+
+.card-img-top {
+    height: 300px;
+}
+
+.card-footer {
+    padding: 0;
+}

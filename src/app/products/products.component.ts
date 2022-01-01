@@ -2,7 +2,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ProductsService } from './../products.service';
 import { map, switchMap } from 'rxjs/operators';
 import { Observable, of, Subscription } from 'rxjs';
-import { Component, OnDestroy } from '@angular/core';
+import { Component } from '@angular/core';
 import { Product } from '../models/product';
 
 import { Cart } from './../models/cart';
@@ -13,10 +13,9 @@ import { CartService } from './../cart.service';
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css'],
 })
-export class ProductsComponent implements OnDestroy {
+export class ProductsComponent {
   products$: Observable<Product[]>;
-  cart: Cart;
-  cartSubscription: Subscription;
+  cart$: Observable<Cart>;
 
   constructor(
     private productsService: ProductsService,
@@ -33,31 +32,30 @@ export class ProductsComponent implements OnDestroy {
         if (!params) return of(null);
 
         let category = params.get('category');
-
-        if (!category)
-          return this.productsService
-            .getAll()
-            .snapshotChanges()
-            .pipe(
-              map((sps) =>
-                sps.map((sp) => ({ key: sp.key, ...sp.payload.val() }))
-              )
-            );
-
-        return this.productsService
-          .getByCategory(category)
-          .snapshotChanges()
-          .pipe(
-            map((sps) =>
-              sps.map((sp) => ({ key: sp.key, ...sp.payload.val() }))
-            )
-          );
+        return this.applyFilter(category);
       })
     );
   }
 
+  private applyFilter(category: string): Observable<Product[]> {
+    if (!category)
+      return this.productsService
+        .getAll()
+        .snapshotChanges()
+        .pipe(
+          map((sps) => sps.map((sp) => ({ key: sp.key, ...sp.payload.val() })))
+        );
+
+      return this.productsService
+        .getByCategory(category)
+        .snapshotChanges()
+        .pipe(
+          map((sps) => sps.map((sp) => ({ key: sp.key, ...sp.payload.val() })))
+        );
+  }
+
   private async getCart() {
-    this.cartSubscription = (await this.cartService.getCart())
+    this.cart$ = (await this.cartService.getCart())
       .snapshotChanges()
       .pipe(
         map(
@@ -68,13 +66,7 @@ export class ProductsComponent implements OnDestroy {
               sc.payload.val().createdOn
             )
         )
-      )
-      .subscribe((c) => (this.cart = c));
+      );
   }
-
-  ngOnDestroy(): void {
-    this.cartSubscription.unsubscribe();
-  }
-  
 }
 
