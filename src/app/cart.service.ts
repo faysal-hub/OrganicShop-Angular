@@ -46,6 +46,10 @@ export class CartService {
     return this.removeCartLines(cartLines$);
   }
 
+  unassignCart(): void {
+    localStorage.removeItem('cartId');
+  }
+
   private async updateQuantity(
     product: Product,
     change: number
@@ -120,7 +124,7 @@ export class CartService {
   }
 
   private removeCartItem(
-    cartLines$: AngularFireObject<CartLine>,
+    cartLines$: AngularFireObject<CartLine>
   ): Promise<void> {
     return cartLines$.remove();
   }
