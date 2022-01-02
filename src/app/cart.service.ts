@@ -87,7 +87,7 @@ export class CartService {
 
   private create(): firebase.database.ThenableReference {
     return this.db.list(this.dbPath).push({
-      createdOn: new Date().toString(),
+      createdOn: new Date().getTime(),
     });
   }
 
