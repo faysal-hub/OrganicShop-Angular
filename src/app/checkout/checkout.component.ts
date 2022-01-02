@@ -1,48 +1,25 @@
-import { NgForm } from '@angular/forms';
-import { map } from 'rxjs/operators';
-
-import { Router } from '@angular/router';
+import { OnInit, Component } from '@angular/core';
 
 import { Cart } from './../models/cart';
-import { Order } from './../models/order';
-import { Shipping } from './../models/shipping';
 
-import { AuthService } from './../auth.service';
-import { OrderService } from './../order.service';
 import { CartService } from './../cart.service';
 
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
-
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs';
-import firebase from 'firebase/app';
 
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
   styleUrls: ['./checkout.component.css'],
 })
-export class CheckoutComponent implements OnInit, OnDestroy {
-  public shipping: Shipping = {} as Shipping;
+export class CheckoutComponent implements OnInit {
+  public cart$: Observable<Cart>;
 
-  public cart: Cart;
-  private user: firebase.User;
-  private cartSubscription: Subscription;
-  private userSubscription: Subscription;
-
-  constructor(
-    private cartService: CartService,
-    private orderService: OrderService,
-    private authService: AuthService,
-    private router: Router
-  ) {}
+  constructor(private cartService: CartService) {}
 
   async ngOnInit(): Promise<void> {
-    this.userSubscription = this.authService.user$.subscribe(
-      (u) => (this.user = u)
-    );
-
-    this.cartSubscription = (await this.cartService.getCart())
+    this.cart$ = (await this.cartService.getCart())
       .snapshotChanges()
       .pipe(
         map(
@@ -53,19 +30,6 @@ export class CheckoutComponent implements OnInit, OnDestroy {
               sc.payload.val().createdOn
             )
         )
-      )
-      .subscribe((c) => (this.cart = c));
-  }
-
-  async placeOrder(): Promise<void> {
-    let order = new Order(this.cart, this.shipping, this.user.uid);
-    let result = await this.orderService.placeOrder(order);
-
-    window.location.href = `/order-success/${result.key}`;
-  }
-
-  ngOnDestroy(): void {
-    this.cartSubscription.unsubscribe();
-    this.userSubscription.unsubscribe();
+      );
   }
 }

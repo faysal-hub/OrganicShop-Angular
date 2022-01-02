@@ -37,6 +37,8 @@ import { CategoriesService } from './category.service';
 import { ProductsService } from './products.service';
 import { CartService } from './cart.service';
 import { ProductQuantityComponent } from './product-quantity/product-quantity.component';
+import { ShippingFormComponent } from './shipping-form/shipping-form.component';
+import { CartSummaryComponent } from './cart-summary/cart-summary.component';
 
 
 
@@ -57,6 +59,8 @@ import { ProductQuantityComponent } from './product-quantity/product-quantity.co
     ProductsFilterComponent,
     ProductCardComponent,
     ProductQuantityComponent,
+    ShippingFormComponent,
+    CartSummaryComponent,
   ],
   imports: [
     BrowserModule,

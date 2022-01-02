@@ -2,108 +2,11 @@
     <button routerLink="/cart" class="btn btn-secondary">Back to Shopping Cart</button>
 </h1>
 <hr>
-<div class="row">
+<div class="row" *ngIf="cart$ | async as cart">
     <div class="col-6">
-        <form class="row g-3" #f="ngForm">
-            <div>
-                <label for="name">Name</label>
-                <input required [(ngModel)]="shipping.name" name="name" #name="ngModel" id="name" type="text"
-                    class="form-control" placeholder="Your name">
-                <div class="alert alert-danger" *ngIf="name.touched && name.invalid">
-                    <div *ngIf="name.errors.required">Name is required.</div>
-                </div>
-            </div>
-    
-            <div class="col-12">
-                <label for="address1" class="form-label">Address</label>
-                <input required [(ngModel)]="shipping.address1" name="address1" #address1="ngModel" id="address1"
-                    type="text" class="form-control" placeholder="1234 Main nöldnerplatz">
-    
-                <div class="alert alert-danger" *ngIf="address1.touched && address1.invalid">
-                    <div *ngIf="address1.errors.required">Address 1 is required.</div>
-                </div>
-            </div>
-    
-            <div class="col-12">
-                <label for="address2" class="form-label">Address 2</label>
-                <input [(ngModel)]="shipping.address2" name="address2" #address2="ngModel" id="address2" type="text"
-                    class="form-control" placeholder="Apartment, studio, or floor">
-            </div>
-            <div class="col-md-6">
-                <label for="inputCity" class="form-label">City</label>
-                <input required [(ngModel)]="shipping.cityName" name="cityName" #cityName="ngModel" id="inputCity"
-                    type="text" class="form-control">
-                <div class="alert alert-danger" *ngIf="cityName.touched && cityName.invalid">
-                    <div *ngIf="cityName.errors.required">City Name is required.</div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <label for="inputState" class="form-label">State</label>
-                <select required [(ngModel)]="shipping.stateName" name="stateName" #stateName="ngModel" id="inputState"
-                    type="text" class="form-control" class="form-select">
-                    <!-- <option selected>Choose...</option> -->
-                    <option>Baden-Württemberg</option>
-                    <option>Bavaria</option>
-                    <option>Berlin</option>
-                    <option>Brandenburg</option>
-                    <option>Bremen</option>
-                    <option>Hamburg</option>
-                    <option>Hesse</option>
-                    <option>Lower Saxony</option>
-                    <option>Mecklenburg-Vorpommern</option>
-                    <option>North Rhine-Westphalia</option>
-                    <option>Rhineland-Palatinate</option>
-                    <option>Saarland</option>
-                    <option>Saxony</option>
-                    <option>Saxony-Anhalt</option>
-                    <option>Schleswig-Holstein</option>
-                    <option>Thuringia</option>
-                </select>
-                <div class="alert alert-danger" *ngIf="stateName.touched && stateName.invalid">
-                    <div *ngIf="stateName.errors.required">State Name is required.</div>
-                </div>
-            </div>
-            <div class="col-md-2">
-                <label for="inputZip" class="form-label">Zip</label>
-                <input required [(ngModel)]="shipping.zipNumber" name="zipNumber" #zipNumber="ngModel" id="inputZip"
-                    type="number" class="form-control" type="text" class="form-control">
-                <div class="alert alert-danger" *ngIf="zipNumber.touched && zipNumber.invalid">
-                    <div *ngIf="zipNumber.errors.required">Zip number is required.</div>
-                </div>
-            </div>
-            <div class="col-12">
-                <div class="form-check">
-                    <input required [(ngModel)]="shipping.gridCheck" #gridCheck="ngModel" name="gridCheck"
-                        class="form-check-input" type="checkbox" id="gridCheck">
-                    <label class="form-check-label" for="gridCheck">
-                        Check me out
-                    </label>
-                </div>
-                <div class="alert alert-danger" *ngIf="gridCheck.touched && gridCheck.invalid">
-                    <div *ngIf="gridCheck.errors.required">Check me is required.</div>
-                </div>
-            </div>
-            <div class="col-12">
-                <button (click)="placeOrder()" type="submit" class="btn btn-primary" [disabled]="f.invalid">Place
-                    Order</button>
-            </div>
-        </form>
+        <shipping-form [cart]="cart"></shipping-form>
     </div>
     <div class="col-6">
-        <div class="card" *ngIf="cart">
-            <div class="card-body">
-                <h3 class="card-title">Order Summary</h3>
-                <p class="card-text">You have {{ cart.itemsCount }} items in your shopping cart.</p>
-                <ul class="list-group list-group-flush">
-                    <li *ngFor="let item of cart.items" class="list-group-item">
-                        {{ item.quantity }} x {{ item.title }}
-                        <span class="float-end">{{ item.totalPrice | currency:'EUR' }}</span>
-                    </li>
-                    <li class="list-group-item fw-bold">Total
-                        <span class="float-end">{{ cart.totalPrice | currency:'EUR' }}</span>
-                    </li>
-                </ul>
-            </div>
-        </div>
+        <cart-summary [cart]="cart"></cart-summary>
     </div>
 </div>
