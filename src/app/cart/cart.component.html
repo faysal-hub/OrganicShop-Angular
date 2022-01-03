@@ -10,7 +10,7 @@
                 <th></th>
                 <th>Product</th>
                 <th class="text-center" style="width: 230px">Quantity</th>
-                <th class="text-end" style="width: 200px">Total Price</th>
+                <th class="text-end" style="width: 200px">Price</th>
             </tr>
         </thead>
         <tbody>
@@ -28,15 +28,17 @@
             </tr>
         </tbody>
         <tfoot>
-            <tr>
-                <th></th>
+            <tr class="table-secondary">
+                <th>Total Price:</th>
                 <th></th>
                 <th></th>
                 <th class="text-end">{{ cart.totalPrice | currency:'EUR' }}</th>
             </tr>
         </tfoot>
     </table>
-    <button *ngIf="cart.itemsCount" routerLink="/checkout" type="button" class="btn btn-primary">Checkout</button>
+    <div>
+        <button *ngIf="cart.itemsCount" routerLink="/checkout" type="button" id="myEdit" class="btn btn-primary float-end" >Checkout</button>
+    </div>
 </div>
 
 

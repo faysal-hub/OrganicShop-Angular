@@ -12,3 +12,8 @@
 .card-footer {
     padding: 0;
 }
+
+#myEdit{
+    margin-right: -12px;
+    margin-bottom: 25px;
+}
