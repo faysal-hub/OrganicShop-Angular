@@ -1,5 +1,5 @@
 import firebase from 'firebase/app';
-import { Product } from './models/product';
+import { Product } from '../models/product';
 import {
   AngularFireDatabase,
   AngularFireList,

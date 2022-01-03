@@ -1,5 +1,5 @@
-import { AuthGuard } from './auth-guard.service';
-import { AdminAuthGuard } from './admin-auth-guard.service';
+import { AuthGuard } from './shared/services/auth-guard.service';
+import { AdminAuthGuard } from './shared/services/admin-auth-guard.service';
 
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';

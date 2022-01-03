@@ -4,12 +4,12 @@ import { NgForm } from '@angular/forms';
 import { map, take } from 'rxjs/operators';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { Product } from './../../models/product';
+import { Product } from 'src/app/shared/models/product';
 
-import { Category } from 'src/app/models/category';
+import { Category } from 'src/app/shared/models/category';
 
-import { CategoriesService } from 'src/app/category.service';
-import { ProductsService } from './../../products.service';
+import { CategoriesService } from 'src/app/shared/services/category.service';
+import { ProductsService } from 'src/app//shared/services/products.service';
 
 
 @Component({

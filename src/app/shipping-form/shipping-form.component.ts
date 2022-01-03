@@ -1,10 +1,10 @@
-import { AuthService } from './../auth.service';
+import { AuthService } from 'src/app/shared/services/auth.service';
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
-import { Shipping } from '../models/shipping';
+import { Shipping } from 'src/app/shared/models/shipping';
 import { Observable, Subscription } from 'rxjs';
-import { Cart } from '../models/cart';
-import { OrderService } from '../order.service';
-import { Order } from '../models/order';
+import { Cart } from 'src/app/shared/models/cart';
+import { OrderService } from 'src/app/shared/services/order.service';
+import { Order } from 'src/app/shared/models/order';
 import firebase from 'firebase';
 
 @Component({

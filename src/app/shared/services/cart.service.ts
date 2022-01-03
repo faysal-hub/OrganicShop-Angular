@@ -1,5 +1,5 @@
-import { CartLine } from './models/cartLine';
-import { Cart } from './models/cart';
+import { CartLine } from '../models/cartLine';
+import { Cart } from '../models/cart';
 import {
   AngularFireDatabase,
   AngularFireObject,
@@ -7,7 +7,7 @@ import {
 } from '@angular/fire/database';
 import { Injectable } from '@angular/core';
 import firebase from 'firebase/app';
-import { Product } from './models/product';
+import { Product } from '../models/product';
 import { take, map } from 'rxjs/operators';
 
 

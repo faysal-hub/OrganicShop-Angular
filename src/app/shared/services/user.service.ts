@@ -1,4 +1,4 @@
-import { AppUser } from './models/appUser';
+import { AppUser } from '../models/appUser';
 import { AngularFireDatabase, AngularFireObject } from '@angular/fire/database';
 import { Injectable } from '@angular/core';
 

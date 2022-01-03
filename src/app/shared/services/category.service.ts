@@ -1,4 +1,4 @@
-import { Category } from './models/category';
+import { Category } from '../models/category';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { Injectable } from '@angular/core';
 

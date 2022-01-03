@@ -1,10 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { Product } from '../models/product';
-import { Cart } from '../models/cart';
-import { CartLine } from './../models/cartLine';
+import { Product } from 'src/app/shared/models/product';
+import { Cart } from 'src/app/shared/models/cart';
+import { CartLine } from 'src/app/shared/models/cartLine';
 
-import { CartService } from '../cart.service';
+import { CartService } from 'src/app/shared/services/cart.service';
 
 @Component({
   selector: 'product-card',

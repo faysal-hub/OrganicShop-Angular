@@ -1,6 +1,6 @@
-import { Product } from './../../models/product';
+import { Product } from 'src/app/shared/models/product';
 import { map } from 'rxjs/operators';
-import { ProductsService } from './../../products.service';
+import { ProductsService } from 'src/app/shared/services/products.service';
 import {
   Component,
   OnDestroy,

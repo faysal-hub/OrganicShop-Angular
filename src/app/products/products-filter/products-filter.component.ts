@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Category } from 'src/app/models/category';
+import { Category } from 'src/app/shared/models/category';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { CategoriesService } from 'src/app/category.service';
+import { CategoriesService } from 'src/app/shared/services/category.service';
 
 @Component({
   selector: 'products-filter',

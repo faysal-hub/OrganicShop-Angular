@@ -1,8 +1,8 @@
-import { OrderService } from './../../order.service';
+import { OrderService } from 'src/app/shared/services/order.service';
 import { Component, OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { Order } from 'src/app/models/order';
+import { Order } from 'src/app/shared/models/order';
 
 @Component({
   selector: 'app-admin-orders',

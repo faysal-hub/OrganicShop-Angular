@@ -29,13 +29,13 @@ import { ProductsFilterComponent } from './products/products-filter/products-fil
 import { ProductFormComponent } from './admin/product-form/product-form.component';
 import { ProductCardComponent } from './product-card/product-card.component';
 
-import { AuthService } from './auth.service';
-import { AuthGuard } from './auth-guard.service';
-import { AdminAuthGuard } from './admin-auth-guard.service';
-import { UsersService } from './user.service';
-import { CategoriesService } from './category.service';
-import { ProductsService } from './products.service';
-import { CartService } from './cart.service';
+import { AuthService } from './shared/services/auth.service';
+import { AuthGuard } from './shared/services/auth-guard.service';
+import { AdminAuthGuard } from './shared/services/admin-auth-guard.service';
+import { UsersService } from './shared/services/user.service';
+import { CategoriesService } from './shared/services/category.service';
+import { ProductsService } from './shared/services/products.service';
+import { CartService } from './shared/services/cart.service';
 import { ProductQuantityComponent } from './product-quantity/product-quantity.component';
 import { ShippingFormComponent } from './shipping-form/shipping-form.component';
 import { CartSummaryComponent } from './cart-summary/cart-summary.component';

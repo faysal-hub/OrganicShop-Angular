@@ -1,8 +1,8 @@
 import { OnInit, Component } from '@angular/core';
 
-import { Cart } from './../models/cart';
+import { Cart } from 'src/app/shared/models/cart';
 
-import { CartService } from './../cart.service';
+import { CartService } from 'src/app/shared/services/cart.service';
 
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
