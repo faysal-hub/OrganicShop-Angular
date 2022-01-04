@@ -1,11 +1,9 @@
-import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { AppRoutingModule } from '../app-routing.module';
+import { SharedModule } from '../shared/shared.module';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -16,9 +14,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   ],
 
   imports: [
-    CommonModule, 
-    AppRoutingModule, 
-    NgbModule,
+    SharedModule,
   ],
 
   exports: [
