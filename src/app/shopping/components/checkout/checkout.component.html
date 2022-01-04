@@ -2,7 +2,7 @@
     <button routerLink="/cart" class="btn btn-secondary">Back to Shopping Cart</button>
 </h1>
 <hr>
-<div class="row" *ngIf="cart$ | async as cart">
+<div class="row" id="myEdit" *ngIf="cart$ | async as cart">
     <div class="col-6">
         <shipping-form [cart]="cart"></shipping-form>
     </div>
