@@ -1,27 +1,26 @@
-# OrganicShopAngular
+# Simple Organic E-shop
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.14.
+A Shopping Web application build with Angular 11 and Firebase 7 and and Bootstrap 5.
 
-## Development server
+## Demo Link :
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Live Dnmo: https://organicshop-angular-2155c.web.app/
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Features
 
-## Build
+- Only Admin can perform Create/Edit/Delete operations & upload photos of items.
+- Normal User can buy items & view their own orders.
+- Admin can access all orders.
+- Login through Facebook & Gmail.
+- Cart System with realtime updates.
+- Realtime updates (through Firebase Realtime Database).
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Running unit tests
+## Tech Stuff Used
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- Angular 11 *(Frontend)*
+- Firebase Realtime Database *(Backend)*
+- Firebase authentication
+-
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
