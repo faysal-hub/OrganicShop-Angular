@@ -5,12 +5,12 @@ import { AdminOrdersComponent } from './admin/components/admin-orders/admin-orde
 import { AdminProductsComponent } from './admin/components/admin-products/admin-products.component';
 import { ProductFormComponent } from './admin/components/product-form/product-form.component';
 import { AdminAuthGuard } from './admin/services/admin-auth-guard.service';
-import { CartComponent } from './cart/cart.component';
-import { CheckoutComponent } from './checkout/checkout.component';
+import { CartComponent } from './shopping/components/cart/cart.component';
+import { CheckoutComponent } from './shopping/components/checkout/checkout.component';
 import { LoginComponent } from './login/login.component';
-import { MyOrdersComponent } from './my-orders/my-orders.component';
-import { OrderSuccessComponent } from './order-success/order-success.component';
-import { ProductsComponent } from './products/products.component';
+import { MyOrdersComponent } from './shopping/components/my-orders/my-orders.component';
+import { OrderSuccessComponent } from './shopping/components/order-success/order-success.component';
+import { ProductsComponent } from './shopping/components/products/products.component';
 import { AuthGuard } from './shared/services/auth-guard.service';
 
 const routes: Routes = [
