@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 
 import { BnNgIdleService } from 'bn-ng-idle';
 
+import { NgxSpinnerService } from 'ngx-spinner';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -13,18 +15,26 @@ import { BnNgIdleService } from 'bn-ng-idle';
 export class AppComponent {
   constructor(
     private bnIdle: BnNgIdleService,
+    private spinner: NgxSpinnerService,
     private usersService: UsersService,
     private auth: AuthService,
-    private router: Router
+    private router: Router,
   ) {
+    /** spinner starts on init */
+    this.spinner.show();
+
+    setTimeout(() => {
+      /** spinner ends after 5 seconds */
+      this.spinner.hide();
+    }, 3000);
     this.auth.user$.subscribe((user) => {
       let returnUrl = localStorage.getItem('returnUrl');
 
       if (!user || !returnUrl) return;
 
       this.usersService.save(user.uid, {
-          email: user.email,
-          name: user.displayName,
+        email: user.email,
+        name: user.displayName,
       });
 
       this.router.navigateByUrl(returnUrl);
@@ -35,7 +45,7 @@ export class AppComponent {
   ngOnInit(): void {
     this.bnIdle.startWatching(3000).subscribe((isTimedOut: boolean) => {
       if (isTimedOut) {
-          this.auth.logout();
+        this.auth.logout();
       }
     });
   }

@@ -1,8 +1,7 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
 import { BrowserModule } from '@angular/platform-browser';
 import { BnNgIdleService } from 'bn-ng-idle';
-
 import { environment } from './../environments/environment';
 import { AdminModule } from './admin/admin.module';
 import { AdminAuthGuard } from './admin/services/admin-auth-guard.service';
@@ -12,28 +11,27 @@ import { SharedModule } from './shared/shared.module';
 import { ShoppingModule } from './shopping/shopping.module';
 
 
-@NgModule({
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-  declarations: [
-    AppComponent,
-  ],
+@NgModule({
+  declarations: [AppComponent],
 
   imports: [
+    NgxSpinnerModule,
+    BrowserAnimationsModule,
     BrowserModule,
     AdminModule,
     SharedModule,
     ShoppingModule,
     CoreModule,
     AngularFireModule.initializeApp(environment.firebase),
-
   ],
 
-  providers: [
-    AdminAuthGuard, 
-    BnNgIdleService
-  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+
+  providers: [AdminAuthGuard, BnNgIdleService],
 
   bootstrap: [AppComponent],
 })
-
 export class AppModule {}

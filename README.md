@@ -22,5 +22,4 @@ Live Dnmo: https://organicshop-angular-2155c.web.app/
 - Angular 11 *(Frontend)*
 - Firebase Realtime Database *(Backend)*
 - Firebase authentication
--
 
