@@ -7,7 +7,7 @@ import { ProductFormComponent } from './admin/components/product-form/product-fo
 import { AdminAuthGuard } from './admin/services/admin-auth-guard.service';
 import { CartComponent } from './shopping/components/cart/cart.component';
 import { CheckoutComponent } from './shopping/components/checkout/checkout.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './core/components/login/login.component';
 import { MyOrdersComponent } from './shopping/components/my-orders/my-orders.component';
 import { OrderSuccessComponent } from './shopping/components/order-success/order-success.component';
 import { ProductsComponent } from './shopping/components/products/products.component';
