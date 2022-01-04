@@ -9,9 +9,8 @@ import { CustomFormsModule } from 'ng2-validation';
 import { TableModule } from 'ngx-easy-table';
 
 import { environment } from './../environments/environment';
-import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
-import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
-import { ProductFormComponent } from './admin/product-form/product-form.component';
+import { AdminModule } from './admin/admin.module';
+import { AdminAuthGuard } from './admin/services/admin-auth-guard.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CartSummaryComponent } from './cart-summary/cart-summary.component';
@@ -24,14 +23,12 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { OrderSuccessComponent } from './order-success/order-success.component';
 import { ProductsFilterComponent } from './products/products-filter/products-filter.component';
 import { ProductsComponent } from './products/products.component';
-import { AdminAuthGuard } from './shared/services/admin-auth-guard.service';
 import { SharedModule } from './shared/shared.module';
 import { ShippingFormComponent } from './shipping-form/shipping-form.component';
 
 
-
-
 @NgModule({
+
   declarations: [
     AppComponent,
     NavbarComponent,
@@ -41,16 +38,16 @@ import { ShippingFormComponent } from './shipping-form/shipping-form.component';
     CheckoutComponent,
     OrderSuccessComponent,
     MyOrdersComponent,
-    AdminProductsComponent,
-    AdminOrdersComponent,
+    
     LoginComponent,
-    ProductFormComponent,
     ProductsFilterComponent,
     ShippingFormComponent,
     CartSummaryComponent,
   ],
+
   imports: [
     BrowserModule,
+    AdminModule,
     SharedModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
@@ -60,10 +57,13 @@ import { ShippingFormComponent } from './shipping-form/shipping-form.component';
     CustomFormsModule,
     TableModule,
   ],
+
   providers: [
     AdminAuthGuard, 
     BnNgIdleService
   ],
+
   bootstrap: [AppComponent],
 })
+
 export class AppModule {}
