@@ -27,7 +27,7 @@ import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.componen
 import { LoginComponent } from './login/login.component';
 import { ProductsFilterComponent } from './products/products-filter/products-filter.component';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
-import { ProductCardComponent } from './product-card/product-card.component';
+import { ProductCardComponent } from './shared/components/product-card/product-card.component';
 
 import { AuthService } from './shared/services/auth.service';
 import { AuthGuard } from './shared/services/auth-guard.service';
@@ -36,7 +36,7 @@ import { UsersService } from './shared/services/user.service';
 import { CategoriesService } from './shared/services/category.service';
 import { ProductsService } from './shared/services/products.service';
 import { CartService } from './shared/services/cart.service';
-import { ProductQuantityComponent } from './product-quantity/product-quantity.component';
+import { ProductQuantityComponent } from './shared/components/product-quantity/product-quantity.component';
 import { ShippingFormComponent } from './shipping-form/shipping-form.component';
 import { CartSummaryComponent } from './cart-summary/cart-summary.component';
 
