@@ -1,15 +1,9 @@
-import { Product } from 'src/app/shared/models/product';
-import { map } from 'rxjs/operators';
-import { ProductsService } from 'src/app/shared/services/products.service';
-import {
-  Component,
-  OnDestroy,
-  ViewChild,
-  TemplateRef,
-  OnInit,
-} from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, OnDestroy, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { Columns, Config, DefaultConfig } from 'ngx-easy-table';
+import { Subscription } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { Product } from 'src/app/shared/models/product';
+import { ProductsService } from 'src/app/shared/services/products.service';
 
 @Component({
   selector: 'app-admin-products',

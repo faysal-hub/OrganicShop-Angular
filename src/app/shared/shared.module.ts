@@ -6,8 +6,8 @@ import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CustomFormsModule } from 'ng2-validation';
 import { TableModule } from 'ngx-easy-table';
-import { AppRoutingModule } from '../app-routing.module';
 
+import { AppRoutingModule } from '../app-routing.module';
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { ProductQuantityComponent } from './components/product-quantity/product-quantity.component';
 import { AuthGuard } from './services/auth-guard.service';

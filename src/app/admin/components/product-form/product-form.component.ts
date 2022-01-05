@@ -1,15 +1,12 @@
-import { Observable } from 'rxjs';
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { map, take } from 'rxjs/operators';
-import { Router, ActivatedRoute } from '@angular/router';
-
-import { Product } from 'src/app/shared/models/product';
-
-import { Category } from 'src/app/shared/models/category';
-
-import { CategoriesService } from 'src/app/shared/services/category.service';
 import { ProductsService } from 'src/app//shared/services/products.service';
+import { Category } from 'src/app/shared/models/category';
+import { Product } from 'src/app/shared/models/product';
+import { CategoriesService } from 'src/app/shared/services/category.service';
 
 
 @Component({

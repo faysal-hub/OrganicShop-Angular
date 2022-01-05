@@ -1,11 +1,8 @@
-import firebase from 'firebase/app';
-import { Product } from '../models/product';
-import {
-  AngularFireDatabase,
-  AngularFireList,
-  AngularFireObject,
-} from '@angular/fire/database';
 import { Injectable } from '@angular/core';
+import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/database';
+import firebase from 'firebase/app';
+
+import { Product } from '../models/product';
 
 @Injectable({
   providedIn: 'root',

@@ -1,9 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
-
-import { Product } from 'src/app/shared/models/product';
+import { Component, Input } from '@angular/core';
 import { Cart } from 'src/app/shared/models/cart';
 import { CartLine } from 'src/app/shared/models/cartLine';
-
+import { Product } from 'src/app/shared/models/product';
 import { CartService } from 'src/app/shared/services/cart.service';
 
 @Component({

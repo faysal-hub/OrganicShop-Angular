@@ -1,6 +1,7 @@
-import { Category } from '../models/category';
-import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { Injectable } from '@angular/core';
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
+
+import { Category } from '../models/category';
 
 @Injectable({
   providedIn: 'root',

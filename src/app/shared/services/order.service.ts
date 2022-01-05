@@ -1,8 +1,9 @@
-import { CartService } from './cart.service';
-import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { Injectable } from '@angular/core';
-import { Order } from '../models/order';
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import firebase from 'firebase/app';
+
+import { Order } from '../models/order';
+import { CartService } from './cart.service';
 
 @Injectable({
   providedIn: 'root',

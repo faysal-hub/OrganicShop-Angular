@@ -1,14 +1,11 @@
-import { CartLine } from '../models/cartLine';
-import { Cart } from '../models/cart';
-import {
-  AngularFireDatabase,
-  AngularFireObject,
-  AngularFireList,
-} from '@angular/fire/database';
 import { Injectable } from '@angular/core';
+import { AngularFireDatabase, AngularFireObject } from '@angular/fire/database';
 import firebase from 'firebase/app';
+import { map, take } from 'rxjs/operators';
+
+import { Cart } from '../models/cart';
+import { CartLine } from '../models/cartLine';
 import { Product } from '../models/product';
-import { take, map } from 'rxjs/operators';
 
 
 @Injectable({
