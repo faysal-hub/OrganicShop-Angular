@@ -4,7 +4,7 @@ import { OrderLine } from './orderLine';
 
 export class Order {
   key: string;
-  createdOn = new Date().getTime();
+  createdOn = new Date().toLocaleString();
   orderLines: OrderLine[];
   cartId: string;
 
